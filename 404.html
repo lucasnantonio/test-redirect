@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Redirecting to new domain</title>
-  <script>
-    // Extract the requested path from the URL and remove the "/test-redirect/" subdirectory
-    var requestedPath = window.location.pathname.replace(/^\/test-redirect/, '');
-    
-    // If the requested path ends in ".html", remove the extension
-    if (requestedPath.match(/\.html$/)) {
-      requestedPath = requestedPath.replace(/\.html$/, '');
-    }
-    
-    // Redirect variations of subroutes to a single URL
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Redirecting to new domain</title>
+    <script>
+      // Extract the requested path from the URL and remove the "/test-redirect/" subdirectory
+      var requestedPath = window.location.pathname.replace(
+        /^\/test-redirect/,
+        ""
+      );
+
+      // If the requested path ends in ".html", remove the extension
+      if (requestedPath.match(/\.html$/)) {
+        requestedPath = requestedPath.replace(/\.html$/, "");
+      }
+
+      // Redirect variations of subroutes to a single URL
       var aliases = {
         "/learn-more": "/",
         "/intro": "/",
@@ -39,7 +42,7 @@
         "/faq": "/about/faq",
         "/about/faq": "/about/faq",
         "/submit-feedback": "/contributing/feedback",
-        "feedback": "/contributing/feedback",
+        feedback: "/contributing/feedback",
         "/contributing/submit-feedback": "/contributing/feedback",
         "/contributing/feedback": "/contributing/feedback",
         "/getting-started": "/contributing/getting-started",
@@ -61,29 +64,31 @@
         "/contributing/rating": "/contributing/rating-notes",
         "/join": "/contributing/sign-up",
         "/signup": "/contributing/sign-up",
-        "/contributing/signup": "/contributing/sign-up",        
+        "/contributing/signup": "/contributing/sign-up",
         "/sign-up": "/contributing/sign-up",
         "/signing-up": "/contributing/sign-up",
         "/timeline-tabs": "/under-the-hood/timeline-tabs",
         "/values": "/contirbuting/values",
-        "/writing-ability/" : "/contributing/writing-ability",
+        "/writing-ability": "/contributing/writing-ability",
         "/impact": "/contributing/writing-and-rating-impact",
         "/birdwatch-scores": "/contributing/writing-and-rating-impact",
         "/writing-and-rating-impact": "/contributing/writing-and-rating-impact",
         "/rating-and-writing-impact": "/contributing/writing-and-rating-impact",
         "/writing-notes": "/contributing/writing-notes",
         "/writing-and-rating-notes": "/contributing/writing-notes",
-      }
+      };
 
-    // Redirect to the new domain with the same path
-     if(aliases[requestedPath]){
-       window.location.replace("https://twitter.github.io/communitynotes" + aliases[requestedPath]);
-     }
-     else {
-       window.location.replace("https://twitter.github.io/communitynotes" + requestedPath);
-     }
-  </script>
-</head>
-<body>
-</body>
+      // Redirect to the new domain with the same path
+      if (aliases[requestedPath] || aliases[requestedPath + "/"]) {
+        window.location.replace(
+          "https://twitter.github.io/communitynotes" + aliases[requestedPath]
+        );
+      } else {
+        window.location.replace(
+          "https://twitter.github.io/communitynotes" + requestedPath
+        );
+      }
+    </script>
+  </head>
+  <body></body>
 </html>
