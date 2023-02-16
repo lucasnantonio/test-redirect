@@ -78,8 +78,8 @@
         "/writing-and-rating-notes": "/contributing/writing-notes",
       };
 
-      // Redirect to the new domain with the same path
-      if (aliases[requestedPath] || aliases[requestedPath + "/"]) {
+      // Find alias in object, or alias minus a trailing slash
+      if (aliases[requestedPath] || aliases[requestedPath.slice(0, -1)]) {
         window.location.replace(
           "https://twitter.github.io/communitynotes" + aliases[requestedPath]
         );
