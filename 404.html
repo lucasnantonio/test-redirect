@@ -76,7 +76,12 @@
       }
 
     // Redirect to the new domain with the same path
-    window.location.replace("https://twitter.github.io/communitynotes" + aliases[requestedPath]);
+     if(aliases[requestedPath]){
+       window.location.replace("https://twitter.github.io/communitynotes" + aliases[requestedPath]);
+     }
+     else {
+       window.location.replace("https://twitter.github.io/communitynotes" + requestedPath);
+     }
   </script>
 </head>
 <body>
