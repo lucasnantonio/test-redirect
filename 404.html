@@ -5,7 +5,12 @@
   <title>Redirecting to new domain</title>
   <script>
     // Extract the requested path from the URL and remove the "/birdwatch/" subdirectory
-    var requestedPath = window.location.pathname.replace(/^\/test-redirect/, '');
+    var requestedPath = window.location.pathname.replace(/^\/birdwatch/, '');
+
+    // If the requested path ends in ".html", remove the extension
+    if (requestedPath.match(/\.html$/)) {
+      requestedPath = requestedPath.replace(/\.html$/, '');
+    }
 
     // Redirect to the new domain with the same path
     window.location.replace("https://twitter.github.io/communitynotes" + requestedPath);
