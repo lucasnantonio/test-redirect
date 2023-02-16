@@ -79,9 +79,14 @@
       };
 
       // Find alias in object, or alias minus a trailing slash
-      if (aliases[requestedPath] || aliases[requestedPath.slice(0, -1)]) {
+      if (aliases[requestedPath]) {
         window.location.replace(
           "https://twitter.github.io/communitynotes" + aliases[requestedPath]
+        );
+      } else if (aliases[requestedPath.slice(0, -1)]) {
+        window.location.replace(
+          "https://twitter.github.io/communitynotes" +
+            aliases[requestedPath.slice(0, -1)]
         );
       } else {
         window.location.replace(
